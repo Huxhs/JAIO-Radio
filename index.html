@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JAIO Radio — JAIO | Country Rockstar</title>
+  <meta name="description" content="Jai-O Radio — official home of Jaio, Country Rockstar. Listen to latest tracks, join the drop list, and connect for bookings and collabs." />
+  <link rel="canonical" href="https://jaioradio.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jaioradio.com/" />
+  <meta property="og:title" content="Jai-O Radio — Jaio | Country Rockstar" />
+  <meta property="og:description" content="Official site for Jaio — new music, exclusive drops, and bookings at jaioradio.com." />
+  <!-- REPLACE: og:image with a 1200×630 promo image URL when ready -->
+  <meta property="og:image" content="https://jaioradio.com/hero-bg.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Jai-O Radio — Jaio | Country Rockstar" />
+  <meta name="twitter:description" content="Official site for Jaio — new music, exclusive drops, and bookings." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="icon" href="logo-j.png" type="image/png" />
+  <link rel="apple-touch-icon" href="logo-j.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 6.5rem;
+      font-size: 16px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0a;
+      color: #f0f0f0;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    :focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 3px;
+    }
+
+    :root {
+      --cyan: #00e5ff;
+      --cyan-glow: rgba(0, 229, 255, 0.35);
+      --amber: #ffaa00;
+      --bg-card: #111111;
+      --text-primary: #f0f0f0;
+      --text-muted: #888888;
+      --radius: 12px;
+      --max-width: 1100px;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.85rem 1.5rem 0.65rem;
+      background: rgba(10, 10, 10, 0.94);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    @media (min-width: 641px) {
+      .site-header {
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+      }
+    }
+    .nav-bar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      text-align: center;
+    }
+    .nav-logo img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .nav-logo span {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(1.5rem, 4.5vw, 1.85rem);
+      letter-spacing: 3px;
+      color: var(--cyan);
+      line-height: 1;
+      text-shadow: 0 0 28px var(--cyan-glow);
+    }
+    .nav-drawer {
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+    .nav-drawer-header {
+      display: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--cyan); }
+    .nav-toggle {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 170;
+      flex-direction: column;
+      gap: 5px;
+      background: rgba(10, 10, 10, 0.6);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      cursor: pointer;
+      padding: 10px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-drawer-panel {
+      display: none;
+    }
+    .nav-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 110;
+      background: rgba(0, 0, 0, 0.65);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0.35s;
+    }
+    .nav-backdrop.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    body.nav-open { overflow: hidden; }
+
+    @media (max-width: 640px) {
+      html { scroll-padding-top: 4.5rem; }
+      .site-header {
+        min-height: 64px;
+        padding: 0.75rem 1rem;
+      }
+      .nav-bar { padding-right: 3rem; }
+      .nav-toggle { display: flex; }
+      .site-header .nav-drawer {
+        display: none;
+        margin-top: 0;
+      }
+      .nav-backdrop {
+        display: block;
+        z-index: 150;
+      }
+      .nav-drawer-panel {
+        display: flex;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: min(300px, 88vw);
+        height: 100dvh;
+        flex-direction: column;
+        background: #0c0c0c;
+        border-left: 1px solid rgba(255,255,255,0.1);
+        box-shadow: -16px 0 48px rgba(0, 0, 0, 0.6);
+        transform: translateX(100%);
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 160;
+        overflow-y: auto;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      .nav-drawer-panel.open {
+        transform: translateX(0);
+        visibility: visible;
+        pointer-events: auto;
+      }
+      .nav-drawer-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.25rem 1.25rem 1rem;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        flex-shrink: 0;
+      }
+      .nav-drawer-title {
+        font-family: 'Bebas Neue', cursive;
+        font-size: 1.35rem;
+        letter-spacing: 2px;
+        color: var(--cyan);
+      }
+      .nav-drawer-close {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 8px;
+        background: transparent;
+        color: var(--text-primary);
+        font-size: 1.5rem;
+        line-height: 1;
+        cursor: pointer;
+      }
+      .nav-drawer-close:hover { border-color: var(--cyan); color: var(--cyan); }
+      .nav-drawer-panel .nav-links {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 0.5rem 0 2rem;
+      }
+      .nav-drawer-panel .nav-links li { width: 100%; }
+      .nav-drawer-panel .nav-links a {
+        display: block;
+        padding: 1.1rem 1.25rem;
+        font-size: 1.05rem;
+        font-weight: 600;
+        text-align: left;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        color: var(--text-primary);
+      }
+      .nav-drawer-panel .nav-links a:hover,
+      .nav-drawer-panel .nav-links a:focus-visible {
+        color: var(--cyan);
+        background: rgba(0, 229, 255, 0.06);
+      }
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 7.5rem 1.5rem 4rem;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('hero-bg.jpg') center center / cover no-repeat;
+      filter: brightness(0.35) saturate(1.2);
+      z-index: 0;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.6) 60%, rgba(10,10,10,1) 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+    .hero-site {
+      display: none;
+    }
+    .hero-content h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(4rem, 14vw, 9rem);
+      letter-spacing: 6px;
+      line-height: 0.95;
+      color: #fff;
+      text-shadow: 0 0 60px var(--cyan-glow), 0 0 120px rgba(0,229,255,0.15);
+    }
+    .hero-content .tagline {
+      font-size: clamp(1rem, 3vw, 1.35rem);
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-top: 0.75rem;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s, box-shadow 0.3s, background 0.3s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+    .btn-primary {
+      background: var(--cyan);
+      color: #0a0a0a;
+      box-shadow: 0 4px 24px var(--cyan-glow);
+    }
+    .btn-primary:hover { box-shadow: 0 6px 32px var(--cyan-glow); background: #33ecff; }
+    .btn-outline {
+      background: transparent;
+      color: var(--text-primary);
+      border: 2px solid rgba(255,255,255,0.25);
+    }
+    .btn-outline:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      box-shadow: 0 4px 20px var(--cyan-glow);
+    }
+    .scroll-indicator {
+      position: relative;
+      z-index: 2;
+      margin-top: 3rem;
+      animation: float 2s ease-in-out infinite;
+    }
+    .scroll-indicator svg { width: 28px; height: 28px; stroke: var(--text-muted); }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    .section {
+      padding: 5rem 1.5rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--cyan);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      letter-spacing: 2px;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.6;
+      max-width: 550px;
+    }
+
+    #music { text-align: center; }
+    #music .section-subtitle { margin: 0 auto 2.5rem; }
+    .music-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.5rem 1.25rem;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .music-carousel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+    .music-carousel-track {
+      display: flex;
+      transition: transform 0.45s ease;
+    }
+    .music-slide {
+      flex: 0 0 100%;
+      min-width: 100%;
+    }
+    .music-slide iframe {
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      display: block;
+    }
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .carousel-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: transparent;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: border-color 0.3s, color 0.3s, box-shadow 0.3s;
+    }
+    .carousel-btn:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      box-shadow: 0 0 16px var(--cyan-glow);
+    }
+    .carousel-dots {
+      display: flex;
+      gap: 0.5rem;
+      list-style: none;
+    }
+    .carousel-dots button {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,0.2);
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .carousel-dots button[aria-selected="true"] {
+      background: var(--cyan);
+      transform: scale(1.25);
+    }
+    .platform-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;
+    }
+    .platform-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--text-muted);
+      transition: all 0.3s;
+    }
+    .platform-link:hover {
+      color: var(--cyan);
+      border-color: var(--cyan);
+      box-shadow: 0 2px 16px var(--cyan-glow);
+    }
+    .platform-link svg { width: 16px; height: 16px; }
+
+    #about {
+      text-align: center;
+      padding-top: 4rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    #about .about-lead {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      letter-spacing: 1px;
+      color: var(--text-primary);
+      max-width: 640px;
+      margin: 0 auto 1.25rem;
+      line-height: 1.2;
+    }
+    #about .about-copy {
+      max-width: 620px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    #about .about-copy p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    #gallery { text-align: center; }
+    #gallery .section-subtitle { margin: 0 auto 2rem; }
+    .gallery-carousel {
+      position: relative;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .gallery-viewport {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+      background: var(--bg-card);
+    }
+    .gallery-track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.6s ease;
+    }
+    .gallery-slide {
+      flex: 0 0 100%;
+      min-width: 100%;
+      height: 100%;
+      cursor: zoom-in;
+    }
+    .gallery-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .gallery-carousel .carousel-controls { margin-top: 1.25rem; }
+
+    .drop-section {
+      background: linear-gradient(170deg, rgba(0,229,255,0.04) 0%, transparent 50%);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    #drops { text-align: center; }
+    #drops .section-subtitle { margin: 0 auto 2rem; }
+    .signup-box {
+      max-width: 480px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+    .signup-box .exclusive-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--amber);
+      background: rgba(255,170,0,0.1);
+      padding: 0.35rem 0.85rem;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+    }
+    .signup-box p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    .signup-form { display: flex; gap: 0.5rem; }
+    .signup-form label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+    .signup-form input[type="email"] {
+      flex: 1;
+      padding: 0.85rem 1rem;
+      border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      font-size: 0.9rem;
+      font-family: inherit;
+    }
+    .signup-form input[type="email"]::placeholder { color: #555; }
+    .signup-form input[type="email"]:focus { border-color: var(--cyan); outline: none; box-shadow: 0 0 0 2px var(--cyan-glow); }
+    .signup-form button {
+      padding: 0.85rem 1.5rem;
+      border-radius: 50px;
+      border: none;
+      background: var(--cyan);
+      color: #0a0a0a;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .signup-form button:hover { background: #33ecff; }
+    .signup-note {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      line-height: 1.5;
+    }
+    .signup-note a { color: var(--cyan); text-decoration: underline; }
+    @media (max-width: 480px) {
+      .signup-form { flex-direction: column; }
+      .signup-form button { width: 100%; }
+    }
+
+    #contact { text-align: center; }
+    #contact .section-subtitle { margin: 0 auto 2.5rem; }
+    .contact-form {
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      text-align: left;
+    }
+    .contact-form label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: -0.5rem;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.1);
+      background: var(--bg-card);
+      color: #fff;
+      font-size: 0.9rem;
+      font-family: inherit;
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: #555; }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--cyan);
+      outline: none;
+      box-shadow: 0 0 0 2px var(--cyan-glow);
+    }
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+    .contact-form .btn { align-self: center; }
+    .form-status {
+      display: none;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.5rem 0;
+    }
+    .form-status.success { display: block; color: var(--cyan); }
+    .form-status.error { display: block; color: #ff6b6b; }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text-muted);
+      transition: all 0.3s;
+    }
+    .social-icon:hover {
+      color: var(--cyan);
+      border-color: var(--cyan);
+      box-shadow: 0 0 20px var(--cyan-glow);
+      transform: translateY(-3px);
+    }
+    .social-icon svg { width: 20px; height: 20px; }
+
+    .footer {
+      text-align: center;
+      padding: 2.5rem 1.5rem 2rem;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+    .footer-brand { color: var(--cyan); font-weight: 600; }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      margin: 0.75rem 0 1.25rem;
+    }
+    .footer-links a:hover { color: var(--cyan); }
+    .footer-zeal {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.85rem;
+      margin-top: 1.75rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: var(--text-primary);
+      transition: color 0.3s, transform 0.3s;
+    }
+    .footer-zeal:hover {
+      color: var(--cyan);
+      transform: translateY(-2px);
+    }
+    .footer-zeal img {
+      width: 56px;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    }
+    .footer-zeal-text {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(1.25rem, 4vw, 1.5rem);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      cursor: zoom-out;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="nav-bar">
+      <a href="#home" class="nav-logo">
+        <img src="logo-j.png" alt="Jai-O Radio logo" width="42" height="42" />
+        <span>JAIO Radio</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navDrawerPanel" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="nav-drawer" aria-label="Main navigation">
+      <ul class="nav-links" id="nav-menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#music">Music</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#drops">Drops</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+  <aside class="nav-drawer-panel" id="navDrawerPanel" aria-hidden="true" aria-label="Mobile menu">
+    <div class="nav-drawer-header">
+      <span class="nav-drawer-title">Menu</span>
+      <button type="button" class="nav-drawer-close" id="navDrawerClose" aria-label="Close menu">&times;</button>
+    </div>
+    <ul class="nav-links" id="nav-menu-mobile">
+      <li><a href="#about">About</a></li>
+      <li><a href="#music">Music</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#drops">Drops</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </aside>
+
+  <section class="hero" id="home">
+    <div class="hero-bg" role="img" aria-label="Jaio performing on stage"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content reveal">
+      <h1>JAIO</h1>
+      <p class="tagline">Country Rockstar</p>
+      <div class="hero-buttons">
+        <a href="#music" class="btn btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Listen
+        </a>
+        <a href="#drops" class="btn btn-outline">Join the Drop List</a>
+      </div>
+    </div>
+    <div class="scroll-indicator" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <section class="section" id="about" aria-labelledby="about-heading">
+    <div class="reveal">
+      <p class="section-label">The Story</p>
+      <h2 class="section-title" id="about-heading">About JAIO</h2>
+      <p class="about-lead">Country rockstar energy. Real stories. No filter.</p>
+      <div class="about-copy">
+        <p>Born from late nights, small-town roots, and a drive to be heard, Jaio is carving his own lane where outlaw country meets modern hip-hop. His sound hits freedom, struggle, ambition, and life lived loud — from neon-lit stages to backroad memories.</p>
+        <p>Every release is built on long hours and lived experience. With a growing fanbase and a vision bigger than music alone, Jaio Radio is the home for what's next: independent, driven, and unapologetically original.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="music" aria-labelledby="music-heading">
+    <div class="reveal">
+      <p class="section-label">Now Playing</p>
+      <h2 class="section-title" id="music-heading">Latest Drops</h2>
+      <p class="section-subtitle">Swipe through the tracks. Full volume. No skips.</p>
+    </div>
+    <div class="music-card reveal">
+      <div class="music-carousel" id="musicCarousel" aria-roledescription="carousel" aria-label="Spotify tracks">
+        <div class="music-carousel-track" id="musicTrack">
+          <div class="music-slide" role="group" aria-roledescription="slide" aria-label="Track 1 of 5">
+            <iframe
+              title="Spotify embed — track 1"
+              src="https://open.spotify.com/embed/track/4kRgPi8gCiBFCeRAxSBE93?utm_source=generator&theme=0"
+              height="352"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"></iframe>
+          </div>
+          <div class="music-slide" role="group" aria-roledescription="slide" aria-label="Track 2 of 5">
+            <iframe
+              title="Spotify embed — track 2"
+              src="https://open.spotify.com/embed/track/0nsE0tkGMKxxFsn8RQgmRq?utm_source=generator&theme=0"
+              height="352"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"></iframe>
+          </div>
+          <div class="music-slide" role="group" aria-roledescription="slide" aria-label="Track 3 of 5">
+            <iframe
+              title="Spotify embed — track 3"
+              src="https://open.spotify.com/embed/track/7lfYMbBOQrem9MTvfL0TY2?utm_source=generator&theme=0"
+              height="352"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"></iframe>
+          </div>
+          <div class="music-slide" role="group" aria-roledescription="slide" aria-label="Track 4 of 5">
+            <iframe
+              title="Spotify embed — track 4"
+              src="https://open.spotify.com/embed/track/5RednGlszOVY5aKLyUW2XH?utm_source=generator&theme=0"
+              height="352"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"></iframe>
+          </div>
+          <div class="music-slide" role="group" aria-roledescription="slide" aria-label="Track 5 of 5">
+            <iframe
+              title="Spotify embed — track 5"
+              src="https://open.spotify.com/embed/track/3S6YnTsCfaJeH4x5Q92zGX?utm_source=generator&theme=0"
+              height="352"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"></iframe>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button type="button" class="carousel-btn music-prev" aria-label="Previous track">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <ul class="carousel-dots music-dots" role="tablist" aria-label="Select track"></ul>
+          <button type="button" class="carousel-btn music-next" aria-label="Next track">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="platform-links">
+        <a href="https://open.spotify.com/artist/6zGGmOnn5ZVRF3DzbjpjG5" class="platform-link" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381C8.64 5.801 15.6 6.001 20.04 8.4c.54.3.72 1.02.42 1.56-.299.421-1.02.599-1.379.72z"/></svg>
+          Spotify
+        </a>
+        <a href="https://music.apple.com/us/artist/jaio/1700597478" class="platform-link" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          Apple Music
+        </a>
+        <a href="https://www.youtube.com/channel/UC9W0xE2gxKAi-vc1h7slXeA" class="platform-link" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="gallery" aria-labelledby="gallery-heading">
+    <div class="reveal">
+      <p class="section-label">The Visuals</p>
+      <h2 class="section-title" id="gallery-heading">Gallery</h2>
+      <p class="section-subtitle">A glimpse into the life of a modern country rockstar—where the road never really ends and every moment tells a story. From late-night stages and backroad drives to quiet moments behind the scenes, this gallery captures the energy, grit, and soul behind the music. Step inside the world behind the sound.</p>
+    </div>
+    <div class="gallery-carousel reveal" id="galleryCarousel" aria-roledescription="carousel" aria-label="Photo gallery">
+      <div class="gallery-viewport">
+        <div class="gallery-track" id="galleryTrack">
+          <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Photo 1 of 6" data-full="gallery-1.jpg">
+            <img src="gallery-1.jpg" alt="Jaio performing live with starburst lights" width="520" height="650" loading="lazy" />
+          </div>
+          <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Photo 2 of 6" data-full="gallery-2.jpg">
+            <img src="gallery-2.jpg" alt="Jaio at a car meet" width="520" height="650" loading="lazy" />
+          </div>
+          <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Photo 3 of 6" data-full="gallery-3.jpg">
+            <img src="gallery-3.jpg" alt="Jaio performing at a venue with star ceiling" width="520" height="650" loading="lazy" />
+          </div>
+          <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Photo 4 of 6" data-full="gallery-4.jpg">
+            <img src="gallery-4.jpg" alt="Jaio singing with horses on a farm" width="520" height="650" loading="lazy" />
+          </div>
+          <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Photo 5 of 6" data-full="gallery-5.jpg">
+            <img src="gallery-5.jpg" alt="Jaio with horses at a barn" width="520" height="650" loading="lazy" />
+          </div>
+          <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Photo 6 of 6" data-full="gallery-6.jpg">
+            <img src="gallery-6.jpg" alt="Jaio — additional gallery photo" width="520" height="650" loading="lazy" />
+          </div>
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button type="button" class="carousel-btn gallery-prev" aria-label="Previous photo">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <ul class="carousel-dots gallery-dots" role="tablist" aria-label="Select photo"></ul>
+        <button type="button" class="carousel-btn gallery-next" aria-label="Next photo">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div class="drop-section">
+    <section class="section" id="drops" aria-labelledby="drops-heading">
+      <div class="reveal">
+        <p class="section-label">Inner Circle</p>
+        <h2 class="section-title" id="drops-heading">Get the Drops First</h2>
+        <p class="section-subtitle">New music, exclusive content, and updates before anyone else. No spam. Just heat.</p>
+      </div>
+      <div class="signup-box reveal">
+        <div class="exclusive-badge">Members Only</div>
+        <p>Be the first to hear new tracks, get early access to drops, and stay locked in with everything Jaio.</p>
+        <!--
+          MAILCHIMP: In Mailchimp → Audience → Signup forms → Embedded forms,
+          copy the form "action" URL and paste below. Field name must stay EMAIL.
+          See LINKS.md for full checklist.
+        -->
+        <form
+          class="signup-form"
+          id="dropForm"
+          action="https://YOUR_DOMAIN.usXX.list-manage.com/subscribe/post?u=YOUR_USER_ID&amp;id=YOUR_LIST_ID"
+          method="post"
+          target="_blank"
+          rel="noopener">
+          <label for="drop-email">Email address</label>
+          <input type="email" id="drop-email" name="EMAIL" placeholder="Your email" required autocomplete="email" />
+          <button type="submit" class="btn btn-primary">I'm In</button>
+        </form>
+        <p class="signup-note">By subscribing you agree to receive emails from JAIO Radio. <a href="privacy.html">Privacy Policy</a></p>
+        <p class="form-status" id="signupStatus" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </div>
+
+  <section class="section" id="contact" aria-labelledby="contact-heading">
+    <div class="reveal">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title" id="contact-heading">Contact</h2>
+      <p class="section-subtitle">Bookings, collabs, or just want to connect — reach out.</p>
+    </div>
+    <form
+      class="contact-form reveal"
+      id="contactForm"
+      action="https://formspree.io/f/xykvgrzd"
+      method="POST">
+      <label for="contact-name">Name</label>
+      <input type="text" id="contact-name" name="name" placeholder="Your name" required autocomplete="name" />
+      <label for="contact-email">Email</label>
+      <input type="email" id="contact-email" name="email" placeholder="Your email" required autocomplete="email" />
+      <label for="contact-message">Message</label>
+      <textarea id="contact-message" name="message" placeholder="What's up?" required></textarea>
+      <input type="hidden" name="_subject" value="New message from jaioradio.com" />
+      <button type="submit" class="btn btn-primary">Send Message</button>
+      <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
+    </form>
+    <div class="socials reveal" aria-label="Social media">
+      <a href="https://www.instagram.com/jaioradio/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@jaioradio" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/channel/UC9W0xE2gxKAi-vc1h7slXeA" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+      <a href="https://open.spotify.com/artist/6zGGmOnn5ZVRF3DzbjpjG5" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381C8.64 5.801 15.6 6.001 20.04 8.4c.54.3.72 1.02.42 1.56-.299.421-1.02.599-1.379.72z"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2026 <span class="footer-brand">JAIO Radio</span> · Jaio. All rights reserved.</p>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#" class="footer-zeal" target="_blank" rel="noopener noreferrer">
+      <img src="zeal-logo.png" alt="The Zeal Collective logo" width="56" height="56" />
+      <span class="footer-zeal-text">The Zeal Collective</span>
+    </a>
+  </footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged gallery image" hidden>
+    <img src="" alt="" />
+  </div>
+
+  <script>
+    (function () {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Mobile nav — full-height side drawer (outside header to avoid backdrop-filter trap)
+      const navToggle = document.querySelector('.nav-toggle');
+      const navDrawerPanel = document.getElementById('navDrawerPanel');
+      const navDrawerClose = document.getElementById('navDrawerClose');
+      const navBackdrop = document.getElementById('navBackdrop');
+      const navMenuLinks = document.querySelectorAll('#nav-menu a, #nav-menu-mobile a');
+
+      function setNavOpen(open) {
+        navDrawerPanel.classList.toggle('open', open);
+        navDrawerPanel.setAttribute('aria-hidden', open ? 'false' : 'true');
+        navBackdrop.classList.toggle('open', open);
+        navBackdrop.setAttribute('aria-hidden', open ? 'false' : 'true');
+        navToggle.classList.toggle('active', open);
+        navToggle.setAttribute('aria-expanded', open);
+        navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        document.body.classList.toggle('nav-open', open);
+      }
+
+      navToggle.addEventListener('click', () => {
+        setNavOpen(!navDrawerPanel.classList.contains('open'));
+      });
+      navDrawerClose.addEventListener('click', () => setNavOpen(false));
+      navBackdrop.addEventListener('click', () => setNavOpen(false));
+      navMenuLinks.forEach((link) => {
+        link.addEventListener('click', () => setNavOpen(false));
+      });
+
+      // Scroll reveal
+      const revealEls = document.querySelectorAll('.reveal');
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealEls.forEach((el) => revealObserver.observe(el));
+
+      // Generic carousel helper
+      function initCarousel({ track, prevBtn, nextBtn, dotsContainer, autoplayMs, pauseRoot }) {
+        const slides = track.children;
+        const count = slides.length;
+        let index = 0;
+        let timer = null;
+        const pauseEl = pauseRoot || track.parentElement;
+
+        function goTo(i) {
+          index = ((i % count) + count) % count;
+          track.style.transform = 'translateX(-' + (index * 100) + '%)';
+          dotsContainer.querySelectorAll('button').forEach((dot, j) => {
+            dot.setAttribute('aria-selected', j === index ? 'true' : 'false');
+            dot.setAttribute('tabindex', j === index ? '0' : '-1');
+          });
+        }
+
+        for (let i = 0; i < count; i++) {
+          const li = document.createElement('li');
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.setAttribute('role', 'tab');
+          btn.setAttribute('aria-label', 'Slide ' + (i + 1));
+          btn.addEventListener('click', () => { goTo(i); resetAutoplay(); });
+          li.appendChild(btn);
+          dotsContainer.appendChild(li);
+        }
+
+        prevBtn.addEventListener('click', () => { goTo(index - 1); resetAutoplay(); });
+        nextBtn.addEventListener('click', () => { goTo(index + 1); resetAutoplay(); });
+
+        function startAutoplay() {
+          if (prefersReducedMotion || !autoplayMs) return;
+          clearInterval(timer);
+          timer = setInterval(() => goTo(index + 1), autoplayMs);
+        }
+        function resetAutoplay() {
+          clearInterval(timer);
+          startAutoplay();
+        }
+
+        pauseEl.addEventListener('mouseenter', () => clearInterval(timer));
+        pauseEl.addEventListener('mouseleave', startAutoplay);
+        pauseEl.addEventListener('focusin', () => clearInterval(timer));
+        pauseEl.addEventListener('focusout', startAutoplay);
+
+        goTo(0);
+        startAutoplay();
+        return { goTo, resetAutoplay };
+      }
+
+      // Music carousel (manual autoplay off — Spotify iframes)
+      initCarousel({
+        track: document.getElementById('musicTrack'),
+        prevBtn: document.querySelector('.music-prev'),
+        nextBtn: document.querySelector('.music-next'),
+        dotsContainer: document.querySelector('.music-dots'),
+        autoplayMs: 0
+      });
+
+      // Gallery carousel — auto-rotates through all photos every 4s
+      const galleryTrack = document.getElementById('galleryTrack');
+      const galleryCarousel = document.getElementById('galleryCarousel');
+      initCarousel({
+        track: galleryTrack,
+        prevBtn: document.querySelector('.gallery-prev'),
+        nextBtn: document.querySelector('.gallery-next'),
+        dotsContainer: document.querySelector('.gallery-dots'),
+        autoplayMs: prefersReducedMotion ? 0 : 4000,
+        pauseRoot: galleryCarousel
+      });
+
+      // Gallery lightbox
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = lightbox.querySelector('img');
+      galleryTrack.querySelectorAll('.gallery-slide').forEach((slide) => {
+        slide.addEventListener('click', () => {
+          const img = slide.querySelector('img');
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt;
+          lightbox.hidden = false;
+          lightbox.classList.add('active');
+        });
+      });
+      lightbox.addEventListener('click', () => {
+        lightbox.classList.remove('active');
+        lightbox.hidden = true;
+        lightboxImg.src = '';
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key !== 'Escape') return;
+        if (navDrawerPanel.classList.contains('open')) setNavOpen(false);
+        if (lightbox.classList.contains('active')) lightbox.click();
+      });
+
+      // Contact form — Formspree AJAX
+      const contactForm = document.getElementById('contactForm');
+      const contactStatus = document.getElementById('contactStatus');
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        contactStatus.className = 'form-status';
+        contactStatus.textContent = 'Sending…';
+        contactStatus.style.display = 'block';
+        try {
+          const res = await fetch(contactForm.action, {
+            method: 'POST',
+            body: new FormData(contactForm),
+            headers: { Accept: 'application/json' }
+          });
+          if (res.ok) {
+            contactStatus.className = 'form-status success';
+            contactStatus.textContent = 'Message sent. We\'ll be in touch.';
+            contactForm.reset();
+          } else {
+            throw new Error('Form error');
+          }
+        } catch {
+          contactStatus.className = 'form-status error';
+          contactStatus.textContent = 'Something went wrong. Try again or email directly.';
+        }
+        setTimeout(() => { contactStatus.style.display = 'none'; }, 5000);
+      });
+
+      // Drop list — Mailchimp opens in new tab; show confirmation
+      const dropForm = document.getElementById('dropForm');
+      const signupStatus = document.getElementById('signupStatus');
+      dropForm.addEventListener('submit', () => {
+        signupStatus.className = 'form-status success';
+        signupStatus.textContent = 'Opening signup — complete the step in the new tab if prompted.';
+        signupStatus.style.display = 'block';
+        setTimeout(() => { signupStatus.style.display = 'none'; }, 6000);
+      });
+    })();
+  </script>
+</body>
+</html>
