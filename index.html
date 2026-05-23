@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JAIO Radio — JAIO | Country Rockstar</title>
-  <meta name="description" content="Jai-O Radio — official home of Jaio, Country Rockstar. Listen to latest tracks, join the drop list, and connect for bookings and collabs." />
+  <title>Jaio Radio</title>
+  <meta name="description" content="Jaio Radio — official home of Jaio, Country Rockstar. Listen to latest tracks, join the drop list, and connect for bookings and collabs." />
   <link rel="canonical" href="https://jaioradio.com/" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://jaioradio.com/" />
-  <meta property="og:title" content="Jai-O Radio — Jaio | Country Rockstar" />
+  <meta property="og:title" content="Jaio Radio — Jaio | Country Rockstar" />
   <meta property="og:description" content="Official site for Jaio — new music, exclusive drops, and bookings at jaioradio.com." />
   <!-- REPLACE: og:image with a 1200×630 promo image URL when ready -->
   <meta property="og:image" content="https://jaioradio.com/hero-bg.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Jai-O Radio — Jaio | Country Rockstar" />
+  <meta name="twitter:title" content="Jaio Radio — Jaio | Country Rockstar" />
   <meta name="twitter:description" content="Official site for Jaio — new music, exclusive drops, and bookings." />
   <meta name="theme-color" content="#0a0a0a" />
   <link rel="icon" href="logo-j.png" type="image/png" />
@@ -622,6 +622,13 @@
       line-height: 1.5;
     }
     .signup-note a { color: var(--cyan); text-decoration: underline; }
+    .signup-inner-circle {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.15rem;
+      letter-spacing: 1px;
+      color: var(--cyan);
+      margin-bottom: 1rem;
+    }
     @media (max-width: 480px) {
       .signup-form { flex-direction: column; }
       .signup-form button { width: 100%; }
@@ -700,11 +707,38 @@
     .social-icon svg { width: 20px; height: 20px; }
 
     .footer {
+      position: relative;
       text-align: center;
-      padding: 2.5rem 1.5rem 2rem;
+      padding: 2.5rem 1.5rem 2.75rem;
       border-top: 1px solid rgba(255,255,255,0.04);
       color: var(--text-muted);
       font-size: 0.8rem;
+    }
+    .site-version {
+      position: absolute;
+      right: 1.25rem;
+      bottom: 1rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: #555;
+    }
+    @media (max-width: 640px) {
+      .site-version {
+        position: static;
+        display: block;
+        margin-top: 1.25rem;
+        text-align: center;
+      }
+    }
+    .mc-honeypot {
+      position: absolute;
+      left: -5000px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
     }
     .footer-brand { color: var(--cyan); font-weight: 600; }
     .footer-links {
@@ -788,8 +822,8 @@
   <header class="site-header">
     <div class="nav-bar">
       <a href="#home" class="nav-logo">
-        <img src="logo-j.png" alt="Jai-O Radio logo" width="42" height="42" />
-        <span>JAIO Radio</span>
+        <img src="logo-j.png" alt="Jaio Radio logo" width="42" height="42" />
+        <span>Jaio Radio</span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navDrawerPanel" aria-label="Open menu">
         <span></span><span></span><span></span>
@@ -843,7 +877,7 @@
   <section class="section" id="about" aria-labelledby="about-heading">
     <div class="reveal">
       <p class="section-label">The Story</p>
-      <h2 class="section-title" id="about-heading">About JAIO</h2>
+      <h2 class="section-title" id="about-heading">About Jaio</h2>
       <p class="about-lead">Country rockstar energy. Real stories. No filter.</p>
       <div class="about-copy">
         <p>Born from late nights, small-town roots, and a drive to be heard, Jaio is carving his own lane where outlaw country meets modern hip-hop. His sound hits freedom, struggle, ambition, and life lived loud — from neon-lit stages to backroad memories.</p>
@@ -980,24 +1014,22 @@
       <div class="signup-box reveal">
         <div class="exclusive-badge">Members Only</div>
         <p>Be the first to hear new tracks, get early access to drops, and stay locked in with everything Jaio.</p>
-        <!--
-          MAILCHIMP: In Mailchimp → Audience → Signup forms → Embedded forms,
-          copy the form "action" URL and paste below. Field name must stay EMAIL.
-          See LINKS.md for full checklist.
-        -->
+        <p class="signup-inner-circle">Jaio Inner Circle</p>
         <form
           class="signup-form"
           id="dropForm"
-          action="https://YOUR_DOMAIN.usXX.list-manage.com/subscribe/post?u=YOUR_USER_ID&amp;id=YOUR_LIST_ID"
+          action="https://gmail.us20.list-manage.com/subscribe/post?u=211c1d78719ae93bf9aab23dd&amp;id=45ef8620c9&amp;f_id=00f755eef0"
           method="post"
-          target="_blank"
-          rel="noopener">
-          <label for="drop-email">Email address</label>
-          <input type="email" id="drop-email" name="EMAIL" placeholder="Your email" required autocomplete="email" />
-          <button type="submit" class="btn btn-primary">I'm In</button>
+          target="mc-hidden-frame">
+          <label class="sr-only" for="drop-email">Email address</label>
+          <input type="email" id="drop-email" name="EMAIL" class="required email" placeholder="Your email" required autocomplete="email" />
+          <div class="mc-honeypot" aria-hidden="true">
+            <input type="text" name="b_211c1d78719ae93bf9aab23dd_45ef8620c9" tabindex="-1" value="" />
+          </div>
+          <button type="submit" name="subscribe" class="btn btn-primary">I'm In</button>
         </form>
-        <p class="signup-note">By subscribing you agree to receive emails from JAIO Radio. <a href="privacy.html">Privacy Policy</a></p>
-        <p class="form-status" id="signupStatus" role="status" aria-live="polite"></p>
+        <iframe name="mc-hidden-frame" id="mc-hidden-frame" title="Mailchimp signup" hidden></iframe>
+        <p class="signup-note">By subscribing you agree to receive emails from Jaio Radio. <a href="privacy.html">Privacy Policy</a></p>
       </div>
     </section>
   </div>
@@ -1008,6 +1040,7 @@
       <h2 class="section-title" id="contact-heading">Contact</h2>
       <p class="section-subtitle">Bookings, collabs, or just want to connect — reach out.</p>
     </div>
+    <!-- Formspree recipient: set to jaiomusicproductions@gmail.com in Formspree dashboard -->
     <form
       class="contact-form reveal"
       id="contactForm"
@@ -1020,6 +1053,7 @@
       <label for="contact-message">Message</label>
       <textarea id="contact-message" name="message" placeholder="What's up?" required></textarea>
       <input type="hidden" name="_subject" value="New message from jaioradio.com" />
+      <input type="hidden" name="_redirect" value="https://jaioradio.com/contact-confirmation.html" />
       <button type="submit" class="btn btn-primary">Send Message</button>
       <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
     </form>
@@ -1040,15 +1074,16 @@
   </section>
 
   <footer class="footer">
-    <p>&copy; 2026 <span class="footer-brand">JAIO Radio</span> · Jaio. All rights reserved.</p>
+    <p>&copy; 2026 <span class="footer-brand">Jaio Radio</span> · Jaio. All rights reserved.</p>
     <nav class="footer-links" aria-label="Footer">
       <a href="privacy.html">Privacy Policy</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a href="#" class="footer-zeal" target="_blank" rel="noopener noreferrer">
+    <a href="https://www.instagram.com/zealthreads_/" class="footer-zeal" target="_blank" rel="noopener noreferrer" aria-label="The Zeal Collective on Instagram">
       <img src="zeal-logo.png" alt="The Zeal Collective logo" width="56" height="56" />
       <span class="footer-zeal-text">The Zeal Collective</span>
     </a>
+    <span class="site-version" aria-label="Site version">v1.0.1</span>
   </footer>
 
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged gallery image" hidden>
@@ -1193,7 +1228,7 @@
         if (lightbox.classList.contains('active')) lightbox.click();
       });
 
-      // Contact form — Formspree AJAX
+      // Contact form — Formspree, then redirect to confirmation page
       const contactForm = document.getElementById('contactForm');
       const contactStatus = document.getElementById('contactStatus');
       contactForm.addEventListener('submit', async (e) => {
@@ -1208,27 +1243,23 @@
             headers: { Accept: 'application/json' }
           });
           if (res.ok) {
-            contactStatus.className = 'form-status success';
-            contactStatus.textContent = 'Message sent. We\'ll be in touch.';
-            contactForm.reset();
-          } else {
-            throw new Error('Form error');
+            window.location.href = 'contact-confirmation.html';
+            return;
           }
+          throw new Error('Form error');
         } catch {
           contactStatus.className = 'form-status error';
-          contactStatus.textContent = 'Something went wrong. Try again or email directly.';
+          contactStatus.textContent = 'Something went wrong. Try again or email jaiomusicproductions@gmail.com.';
         }
         setTimeout(() => { contactStatus.style.display = 'none'; }, 5000);
       });
 
-      // Drop list — Mailchimp opens in new tab; show confirmation
+      // Drop list — Mailchimp via hidden iframe, then local confirmation page
       const dropForm = document.getElementById('dropForm');
-      const signupStatus = document.getElementById('signupStatus');
       dropForm.addEventListener('submit', () => {
-        signupStatus.className = 'form-status success';
-        signupStatus.textContent = 'Opening signup — complete the step in the new tab if prompted.';
-        signupStatus.style.display = 'block';
-        setTimeout(() => { signupStatus.style.display = 'none'; }, 6000);
+        setTimeout(() => {
+          window.location.href = 'signup-confirmation.html';
+        }, 400);
       });
     })();
   </script>
