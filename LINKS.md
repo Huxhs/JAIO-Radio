@@ -1,6 +1,6 @@
-# Jaio Radio — deployment checklist
+# Jaio Radio deployment checklist
 
-**Current site version: v1.0.1**
+**Current site version: v1.0.2**
 
 ## Configured
 
@@ -40,7 +40,7 @@ The site redirects to `signup-confirmation.html` after signup. For Mailchimp’s
 | Open Graph image | Replace `og:image` with 1200×630 promo art |
 | Dedicated favicon | Optional `favicon.png` |
 
-## Deploy v1.0.1
+## Deploy v1.0.2
 
 Push these files to GitHub so Cloudflare redeploys:
 
@@ -56,4 +56,4 @@ Test after deploy:
 - `https://jaioradio.com`
 - Contact form → `contact-confirmation.html`
 - Drop list signup → `signup-confirmation.html`
-- Footer shows **v1.0.1**
+- Footer shows **v1.0.2**
